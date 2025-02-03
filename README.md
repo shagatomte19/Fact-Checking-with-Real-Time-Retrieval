@@ -1,6 +1,6 @@
 # Fact-Checking-with-Real-Time-Retrieval
 
-```md
+
 # 🔍 Automated Fact-Checking System with Real-Time Evidence Retrieval  
 
 ## 📌 Overview  
@@ -21,32 +21,32 @@ This project is an **AI-powered fact-checking system** that verifies claims by r
 ```plaintext
 fact-checking-system/
 │── data_pipeline/
-│   ├── ingest_news.py  # Scrapes RSS/Twitter for real-time data
-│   ├── ingest_fever.py  # Fetches FEVER dataset
-│   ├── preprocess.py  # Cleans and preprocesses text data
+│   ├── ingest_news.py  
+│   ├── ingest_fever.py  
+│   ├── preprocess.py  
 │── model/
-│   ├── train_mistral.py  # Fine-tuning Mistral-7B
-│   ├── evaluate.py  # Evaluates classification model accuracy
-│   ├── export.py  # Saves model for inference
+│   ├── train_mistral.py  
+│   ├── evaluate.py  
+│   ├── export.py  
 │── retriever/
-│   ├── index_documents.py  # Uses LlamaIndex to store vectorized text
-│   ├── retrieve.py  # Queries Pinecone/FAISS for relevant evidence
+│   ├── index_documents.py  
+│   ├── retrieve.py  
 │── api/
-│   ├── main.py  # FastAPI service for fact-checking
-│   ├── inference.py  # Loads models and processes requests
+│   ├── main.py  
+│   ├── inference.py  
 │── frontend/
-│   ├── pages/  # React/Next.js frontend components
-│   ├── styles/  # UI styling
+│   ├── pages/  
+│   ├── styles/  
 │── evaluation/
-│   ├── bias_detection.py  # Fairlearn for bias analysis
-│   ├── monitoring.py  # W&B for tracking accuracy
+│   ├── bias_detection.py  
+│   ├── monitoring.py  
 │── deployment/
-│   ├── Dockerfile  # Containerizes the API
-│   ├── kubernetes.yaml  # K8s deployment (optional)
+│   ├── Dockerfile  
+│   ├── kubernetes.yaml  
 │── .github/workflows/
-│   ├── ci_cd.yml  # GitHub Actions for automated deployment
+│   ├── ci_cd.yml  
 │── notebooks/
-│   ├── experimentation.ipynb  # Model testing and development
+│   ├── experimentation.ipynb  
 │── .gitignore
 │── requirements.txt
 │── README.md
@@ -110,78 +110,6 @@ uvicorn api.main:app --reload
 
 ---
 
-### **3️⃣ Set Up the Frontend (React/Next.js)**
-#### ➤ Navigate to the Frontend Directory
-```bash
-cd frontend
-```
-#### ➤ Install Dependencies
-```bash
-npm install
-```
-#### ➤ Run the Frontend
-```bash
-npm run dev
-```
-➡ The UI will be available at: **http://localhost:3000**
-
----
-
-## 🛠️ CI/CD Setup (GitHub Actions)  
-
-### **1️⃣ Enable GitHub Actions**  
-- Go to **GitHub Repository** → Click on **Actions** → Enable  
-
-### **2️⃣ Create a Workflow File**
-- Inside `.github/workflows/`, create a file: **`ci_cd.yml`**  
-- Add the following content (this will be covered step-by-step later 👇):
-```yaml
-name: CI/CD Pipeline
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.8'
-      - name: Install Dependencies
-        run: pip install -r requirements.txt
-      - name: Run Tests
-        run: pytest tests/
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy API (Railway.app)
-        run: curl -X POST -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" "https://api.railway.app/deploy"
-      - name: Deploy Frontend (Vercel)
-        run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
-```
-🔹 **GitHub Secrets Required:**  
-- `RAILWAY_TOKEN`: API Key for Railway.app  
-- `VERCEL_TOKEN`: API Key for Vercel  
-
----
-
-## ⚡ Future Enhancements  
-✅ Implement user feedback to improve accuracy  
-✅ Expand evidence sources (scientific repositories)  
-✅ Optimize retrieval efficiency with hybrid search  
-✅ Improve real-time misinformation detection  
-
----
 
 ## 📝 Contributing  
 🙌 Contributions are welcome! If you’d like to improve this project, feel free to:  
@@ -200,9 +128,5 @@ This project is **open-source** under the **MIT License**.
 
 💡 **_Built with passion for truth and transparency!_** 🛡️✨
 ```
-
----
-This `README.md` is **technical, well-structured, and stylish** 🔥.  
-It includes **installation, architecture, CI/CD, dataset sources, and future plans**.  
-
-Let me know if you want any modifications! 🚀
+Yours,
+Enamul Hasan Shagato
