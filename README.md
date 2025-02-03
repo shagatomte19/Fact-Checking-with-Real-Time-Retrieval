@@ -89,10 +89,10 @@ fact-checking-system/
 ### **1️⃣ Clone the Repository**  
 ```bash
 git clone https://github.com/shagatomte19/Fact-Checking-with-Real-Time-Retrieval.git
-cd fact-checking-system
+cd Fact-Checking-with-Real-Time-Retrieval
 ```
 
-### **2️⃣ Set Up the Backend (FastAPI)**
+### **2️⃣ Set Up the Environment **
 #### ➤ Create a Virtual Environment
 ```bash
 python -m venv venv
