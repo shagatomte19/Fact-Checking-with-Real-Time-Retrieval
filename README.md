@@ -124,9 +124,6 @@ uvicorn api.main:app --reload
 ## 📜 License  
 This project is **open-source** under the **MIT License**.  
 
----
-
-💡 **_Built with passion for truth and transparency!_** 🛡️✨
 ```
 Yours,
 Enamul Hasan Shagato
