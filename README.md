@@ -92,7 +92,7 @@ git clone https://github.com/shagatomte19/Fact-Checking-with-Real-Time-Retrieval
 cd Fact-Checking-with-Real-Time-Retrieval
 ```
 
-### **2️⃣ Set Up the Environment **
+### **2️⃣ Set Up the Environment**
 #### ➤ Create a Virtual Environment
 ```bash
 python -m venv venv
