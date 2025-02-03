@@ -88,7 +88,7 @@ fact-checking-system/
 
 ### **1️⃣ Clone the Repository**  
 ```bash
-git clone https://github.com/shagatomte19/fact-checking-system.git
+git clone https://github.com/shagatomte19/Fact-Checking-with-Real-Time-Retrieval.git
 cd fact-checking-system
 ```
 
