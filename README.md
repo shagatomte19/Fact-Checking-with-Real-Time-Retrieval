@@ -25,7 +25,7 @@ fact-checking-system/
 │   ├── ingest_fever.py  
 │   ├── preprocess.py  
 │── model/
-│   ├── train_mistral.py  
+│   ├── tran_mistral.py  
 │   ├── evaluate.py  
 │   ├── export.py  
 │── retriever/
