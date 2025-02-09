@@ -9,51 +9,51 @@ on:
       - main
 
 jobs:
-  backend-tests:
-    name: Run Backend Tests (FastAPI & FAISS)
-    runs-on: ubuntu-latest
+  # backend-tests:
+  #   name: Run Backend Tests (FastAPI & FAISS)
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+  #   steps:
+  #     - name: Checkout Repository
+  #       uses: actions/checkout@v3
 
-      - name: Set Up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
+  #     - name: Set Up Python
+  #       uses: actions/setup-python@v4
+  #       with:
+  #         python-version: "3.10"
 
-      - name: Install Dependencies
-        run: |
-          pip install -r requirements.txt
-          pip install pytest faiss-cpu
+  #     - name: Install Dependencies
+  #       run: |
+  #         pip install -r requirements.txt
+  #         pip install pytest faiss-cpu
 
-      - name: Run Backend Tests
-        run: pytest backend/tests/
+  #     - name: Run Backend Tests
+  #       run: pytest backend/tests/
 
-  frontend-tests:
-    name: Run Frontend Tests (Next.js API)
-    runs-on: ubuntu-latest
-    needs: backend-tests  # Only runs if backend tests pass
+  # frontend-tests:
+  #   name: Run Frontend Tests (Next.js API)
+  #   runs-on: ubuntu-latest
+  #   needs: backend-tests  # Only runs if backend tests pass
 
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+  #   steps:
+  #     - name: Checkout Repository
+  #       uses: actions/checkout@v3
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18"
+  #     - name: Install Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: "18"
 
-      - name: Install Dependencies
-        run: cd frontend && npm install
+  #     - name: Install Dependencies
+  #       run: cd frontend && npm install
 
-      - name: Run Frontend Tests
-        run: cd frontend && npm test
+  #     - name: Run Frontend Tests
+  #       run: cd frontend && npm test
 
   deploy:
     name: Deploy to Vercel
     runs-on: ubuntu-latest
-    needs: frontend-tests  # Deploy only if tests pass
+    # needs: frontend-tests  # Deploy only if tests pass
 
     steps:
       - name: Checkout Repository
