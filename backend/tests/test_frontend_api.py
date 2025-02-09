@@ -1,4 +1,4 @@
-import handler from "../pages/api/fact-check";
+from backend.pages.api.fact_check import handler
 
 describe("Fact-Check API", () => {
   it("should return a result for a claim", async () => {
