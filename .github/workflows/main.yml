@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI/CD Pipeline for Fact-Checking App
 
 on:
   push:
@@ -9,33 +9,57 @@ on:
       - main
 
 jobs:
-  # Job for building and testing
-  build:
+  backend-tests:
+    name: Run Backend Tests (FastAPI & FAISS)
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v3
+      - name: Set Up Python
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.10.11'
+          python-version: "3.10"
 
       - name: Install Dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r backend/requirements.txt
+          pip install pytest faiss-cpu
 
-      - name: Run Tests
+      - name: Run Backend Tests
         run: pytest tests/
 
-  # Job for deploying the API and Frontend
-  deploy:
-    needs: build
+  frontend-tests:
+    name: Run Frontend Tests (Next.js API)
     runs-on: ubuntu-latest
+    needs: backend-tests  # Only runs if backend tests pass
+
     steps:
-      - name: Deploy API to Railway
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install Dependencies
+        run: cd frontend && npm install
+
+      - name: Run Frontend Tests
+        run: cd frontend && npm test
+
+  deploy:
+    name: Deploy to Vercel
+    runs-on: ubuntu-latest
+    needs: frontend-tests  # Deploy only if tests pass
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Deploy to Vercel
         run: |
-          curl -X POST -H "Authorization: Bearer ${{ secrets.RAILWAY_TOKEN }}" \
-          "https://api.railway.app/deploy"
-      
-      - name: Deploy Frontend to Vercel
-        run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
+          npm install -g vercel
+          vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
