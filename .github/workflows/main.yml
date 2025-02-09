@@ -28,7 +28,7 @@ jobs:
           pip install pytest faiss-cpu
 
       - name: Run Backend Tests
-        run: pytest tests/
+        run: pytest backend/tests/
 
   frontend-tests:
     name: Run Frontend Tests (Next.js API)
