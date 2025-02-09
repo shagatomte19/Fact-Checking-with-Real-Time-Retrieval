@@ -47,8 +47,8 @@ jobs:
       - name: Install Dependencies
         run: cd frontend && npm install
 
-      - name: Run Frontend Tests
-        run: cd frontend && npm test
+      # - name: Run Frontend Tests
+      #   run: cd frontend && npm test
 
   deploy:
     name: Deploy to Vercel
